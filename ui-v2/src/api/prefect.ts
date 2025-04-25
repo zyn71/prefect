@@ -5374,6 +5374,11 @@ export interface components {
             /** @description The deployment's concurrency options. */
             concurrency_options?: components["schemas"]["ConcurrencyOptions"] | null;
             /**
+             * Global Concurrency Limit Id
+             * @description The ID of the global concurrency limit to apply to the deployment.
+             */
+            global_concurrency_limit_id?: string | null;
+            /**
              * Enforce Parameter Schema
              * @description Whether or not the deployment should enforce the parameter schema.
              * @default true
@@ -5437,6 +5442,8 @@ export interface components {
             job_variables?: {
                 [key: string]: unknown;
             };
+            /** @description A description of this version of the deployment. */
+            version_info?: components["schemas"]["VersionInfo"] | null;
         };
         /**
          * DeploymentFilter
@@ -5935,6 +5942,11 @@ export interface components {
             /** @description The deployment's concurrency options. */
             concurrency_options?: components["schemas"]["ConcurrencyOptions"] | null;
             /**
+             * Global Concurrency Limit Id
+             * @description The ID of the global concurrency limit to apply to the deployment.
+             */
+            global_concurrency_limit_id?: string | null;
+            /**
              * Parameters
              * @description Parameters for flow runs scheduled by the deployment.
              */
@@ -5984,6 +5996,8 @@ export interface components {
              * @description Whether or not the deployment should enforce the parameter schema.
              */
             enforce_parameter_schema?: boolean | null;
+            /** @description A description of this version of the deployment. */
+            version_info?: components["schemas"]["VersionInfo"] | null;
         };
         /**
          * DoNothing
@@ -9503,6 +9517,21 @@ export interface components {
              * @description A list of variable tags
              */
             tags?: string[] | null;
+        };
+        /** VersionInfo */
+        VersionInfo: {
+            /**
+             * Type
+             * @description The type of version info.
+             */
+            type: string;
+            /**
+             * Version
+             * @description The version of the deployment.
+             */
+            version: string;
+        } & {
+            [key: string]: unknown;
         };
         /**
          * WorkPool
